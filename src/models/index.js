@@ -52,8 +52,8 @@ OrderItems.belongsTo(Products, {
   onDelete: "RESTRICT",
 });
 
-if (process.env.ENV == "development") {
-  sequelize.sync();
-}
+// if (process.env.ENV == "development") {
+//   sequelize.sync();
+// }
 
 export { Users, Products, Orders, OrderItems };
