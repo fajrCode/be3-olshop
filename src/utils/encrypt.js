@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-const salt = 13;
+const salt = 11;
 
 export const encrypt = (pw) => {
   return bcrypt.hashSync(pw, salt);
