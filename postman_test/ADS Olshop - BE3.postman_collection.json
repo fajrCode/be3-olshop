@@ -1,0 +1,2833 @@
+{
+	"info": {
+		"_postman_id": "07964edf-8574-44d2-b2e2-0ef74b0b3784",
+		"name": "ADS Olshop - BE3",
+		"description": "# 🚀 Dokumentasi API ADS Olshop BE3 - Fajri A\n\nDokumentasi API Backend Toko online sederhana",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27898805"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"user@gmail.com\",\n    \"password\": \"test\",\n    \"confirmPassword\": \"test\",\n    \"name\": \"user\",\n    \"role\": \"customer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"user@gmail.com\",\n    \"password\": \"test\",\n    \"confirmPassword\": \"test\",\n    \"name\":\"user\",\n    \"role\":\"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-4slrI5lNF1x+4FDTbfZ18fSP3go\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 02:31:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Registrasi anda berhasil\"\n}"
+						},
+						{
+							"name": "fail - email / pw kosong",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"\",\n    \"password\": \"test\",\n    \"confirmPassword\": \"test\",\n    \"name\":\"user\",\n    \"role\":\"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-w6WBHwPoByMjRq3w0rEe2F8fEzc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:31:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Mohon masukkan email atau password\"\n}"
+						},
+						{
+							"name": "fail - pw tidak sama",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"user@gmail.com\",\n    \"password\": \"test\",\n    \"confirmPassword\": \"tesst\",\n    \"name\":\"user\",\n    \"role\":\"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-jCKjy9E+tc0W9pXT06xx9c6Ps7Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:31:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Maaf password yang anda masukkan tidak sama\"\n}"
+						},
+						{
+							"name": "fail - role tidak ada",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"user@gmail.com\",\n    \"password\": \"test\",\n    \"confirmPassword\": \"test\",\n    \"name\":\"user\",\n    \"role\":\"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "100"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"64-3O1NIfIVSGKF0zMXMfQh69z6Sfs\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:32:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Mohon maaf, tolong pilih role anda terlebih dahulu\"\n}"
+						},
+						{
+							"name": "fail - email sudah terdaftar",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"user@gmail.com\",\n    \"password\": \"test\",\n    \"confirmPassword\": \"test\",\n    \"name\": \"user\",\n    \"role\": \"customer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-bQMFRxJTF+JgoWpaewhGeOJn4Nc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:32:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Maaf email anda telah terdaftar\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									"",
+									"const jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"admin@gmail.com\",\n    \"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"admin@gmail.com\",\n    \"password\": \"test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "516"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"204-XHgKAZhGQU3WKZGcm2+p1PFe9i0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 02:31:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Log in Successful\",\n    \"data\": {\n        \"id\": \"9dd86298-eebc-4ee6-b875-ae640fc46a5b\",\n        \"email\": \"admin@gmail.com\",\n        \"name\": \"admin\",\n        \"role\": \"customer\",\n        \"entryTime\": \"20240105-092902\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlkZDg2Mjk4LWVlYmMtNGVlNi1iODc1LWFlNjQwZmM0NmE1YiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwibmFtZSI6ImFkbWluIiwicm9sZSI6ImN1c3RvbWVyIiwiZW50cnlUaW1lIjoiMjAyNDAxMDUtMDkyOTAyIiwiaWF0IjoxNzA0NDIxOTEyLCJleHAiOjE3MDQ0MjkxMTJ9.zvEc7gZP2rIywc7X5xyCiPC0XVT_O7xNZkZhKwpl4fs\"\n}"
+						},
+						{
+							"name": "fail - email/pw kosong",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"\",\n    \"password\": \"test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-w6WBHwPoByMjRq3w0rEe2F8fEzc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:33:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Mohon masukkan email atau password\"\n}"
+						},
+						{
+							"name": "fail - belum registrasi",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"admsin@gmail.com\",\n    \"password\": \"test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-fqAlTJ9gixRFcGPwtF0NA/qEHck\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:34:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"403\",\n    \"status\": \"Forbidden\",\n    \"message\": \"Maaf anda belum melakukan registrasi\"\n}"
+						},
+						{
+							"name": "fail - pw salah",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"admin@gmail.com\",\n    \"password\": \"tesdt\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-/6Jmngf1CDLDiu34xXFPK96cE+4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:34:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"403\",\n    \"status\": \"Forbidden\",\n    \"message\": \"Maaf password yang anda masukkan salah\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"logout"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-d+v/IBqNqIcJ0m3dSVNsmQvz1gE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 02:32:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Log out berhasil\"\n}"
+						},
+						{
+							"name": "fail - token sudah tidak valid",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-mTd7F16NIRZboxBnMMlJh2UkAC0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:34:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"401\",\n    \"status\": \"Unauthorized\",\n    \"message\": \"Maaf token kamu sudah tidak valid\"\n}"
+						},
+						{
+							"name": "fail-server error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-G37x8n94Ecsw1HppVusLvLobQu8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:35:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"500\",\n    \"status\": \"Internal Server Error\",\n    \"message\": \"Sorry our server get error\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoint for Register, Login, and Logout"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Kulkas 2 pintu\",\n    \"desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n    \"price\": \"500000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Kulkas 4 pintu\",\n    \"desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n    \"price\": \"300000000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-UOq5kt1CC4/17uidnOIcY3UYgNY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 04:05:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Product berhasil di tambahkan\"\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Kulkas 2 pintu\",\n    \"desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n    \"price\": \"500000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-CBGYzF0mvjKO3AFfJZeL0u2w3+A\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:20:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"401\",\n    \"status\": \"Unauthorized\",\n    \"message\": \"Maaf kamu tidak punya akses\"\n}"
+						},
+						{
+							"name": "fail500",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Kulkas 2 pintu\",\n    \"desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n    \"price\": \"500000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-G37x8n94Ecsw1HppVusLvLobQu8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:21:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"500\",\n    \"status\": \"Internal Server Error\",\n    \"message\": \"Sorry our server get error\"\n}"
+						}
+					]
+				},
+				{
+					"name": "allProducts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"proudctId\", jsonData.data[0].productId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1190"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a6-wzr+dE96rz2R1sVSmYpmADBgNBE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:06:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Response Success\",\n    \"data\": [\n        {\n            \"productId\": \"0aa9704a-13ad-4340-913e-a81ded34eb65\",\n            \"name\": \"Kulkas 1 pintu\",\n            \"desc\": \"Kulkas satu pintu\",\n            \"price\": \"570000.00\",\n            \"sellerId\": \"9dd86298-eebc-4ee6-b875-ae640fc46a5b\",\n            \"createdAt\": \"2024-01-05T03:56:32.000Z\",\n            \"updatedAt\": \"2024-01-05T16:00:10.000Z\"\n        },\n        {\n            \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n            \"name\": \"Kulkas 4 pintu\",\n            \"desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n            \"price\": \"900000.00\",\n            \"sellerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\",\n            \"createdAt\": \"2024-01-05T04:05:39.000Z\",\n            \"updatedAt\": \"2024-01-05T04:05:39.000Z\"\n        },\n        {\n            \"productId\": \"c3bc2991-a3e8-40c1-9305-c610d9ad699c\",\n            \"name\": \"Kulkas 3 pintu\",\n            \"desc\": \"Kulkas tiga pintu dengan fitur membuat batu es otomatis\",\n            \"price\": \"2500000.00\",\n            \"sellerId\": \"9dd86298-eebc-4ee6-b875-ae640fc46a5b\",\n            \"createdAt\": \"2024-01-05T03:56:56.000Z\",\n            \"updatedAt\": \"2024-01-05T03:56:56.000Z\"\n        },\n        {\n            \"productId\": \"fab5fa3c-1554-4447-bcb3-e174e546a80d\",\n            \"name\": \"Kulkas 2 pintu\",\n            \"desc\": \"Kulkas dua pintu dengan fitur membuat batu es otomatis\",\n            \"price\": \"2000000.00\",\n            \"sellerId\": \"9dd86298-eebc-4ee6-b875-ae640fc46a5b\",\n            \"createdAt\": \"2024-01-05T03:51:25.000Z\",\n            \"updatedAt\": \"2024-01-05T03:51:25.000Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-G37x8n94Ecsw1HppVusLvLobQu8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:11:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"500\",\n    \"status\": \"Internal Server Error\",\n    \"message\": \"Sorry our server get error\"\n}"
+						}
+					]
+				},
+				{
+					"name": "allProductSeller",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/products/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"me"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/products/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"me"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"53-VmYd0iNm5FyaSxfQazSuET7vFQ8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:16:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Maaf kamu belum memiliki products\"\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/products/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "899"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"383-feOh7lTU3ffRrtpv53gLhj712c4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:18:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Response Success\",\n    \"data\": [\n        {\n            \"productId\": \"0aa9704a-13ad-4340-913e-a81ded34eb65\",\n            \"name\": \"Kulkas 1 pintu\",\n            \"desc\": \"Kulkas satu pintu\",\n            \"price\": \"570000.00\",\n            \"sellerId\": \"9dd86298-eebc-4ee6-b875-ae640fc46a5b\",\n            \"createdAt\": \"2024-01-05T03:56:32.000Z\",\n            \"updatedAt\": \"2024-01-05T16:00:10.000Z\"\n        },\n        {\n            \"productId\": \"c3bc2991-a3e8-40c1-9305-c610d9ad699c\",\n            \"name\": \"Kulkas 3 pintu\",\n            \"desc\": \"Kulkas tiga pintu dengan fitur membuat batu es otomatis\",\n            \"price\": \"2500000.00\",\n            \"sellerId\": \"9dd86298-eebc-4ee6-b875-ae640fc46a5b\",\n            \"createdAt\": \"2024-01-05T03:56:56.000Z\",\n            \"updatedAt\": \"2024-01-05T03:56:56.000Z\"\n        },\n        {\n            \"productId\": \"fab5fa3c-1554-4447-bcb3-e174e546a80d\",\n            \"name\": \"Kulkas 2 pintu\",\n            \"desc\": \"Kulkas dua pintu dengan fitur membuat batu es otomatis\",\n            \"price\": \"2000000.00\",\n            \"sellerId\": \"9dd86298-eebc-4ee6-b875-ae640fc46a5b\",\n            \"createdAt\": \"2024-01-05T03:51:25.000Z\",\n            \"updatedAt\": \"2024-01-05T03:51:25.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "detailProduct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/products/{{proudctId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"{{proudctId}}"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/products/{{proudctId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"{{proudctId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "316"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13c-Ot8d8vEP4HdlIlbX5TMqpwVycgg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:06:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Response Success\",\n    \"data\": {\n        \"productId\": \"0aa9704a-13ad-4340-913e-a81ded34eb65\",\n        \"name\": \"Kulkas 1 pintu\",\n        \"desc\": \"Kulkas satu pintu\",\n        \"price\": \"570000.00\",\n        \"sellerId\": \"9dd86298-eebc-4ee6-b875-ae640fc46a5b\",\n        \"createdAt\": \"2024-01-05T03:56:32.000Z\",\n        \"updatedAt\": \"2024-01-05T16:00:10.000Z\"\n    }\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/products/{{proudctId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"{{proudctId}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-8M1em0EQ0b00oaFJxvg1SSedPvM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:04:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Maaf tidak ada barang\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Kulkas 1 pintu\",\r\n    \"desc\": \"Kulkas satu pintu\",\r\n    \"price\": \"570000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/{{proudctId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"{{proudctId}}"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Kulkas 1 pintu\",\r\n    \"desc\": \"Kulkas satu pintu\",\r\n    \"price\": \"570000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/{{proudctId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"{{proudctId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-cGqkQGh3TCLk47OfYYmrxnwu5m4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:00:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Product berhasil update\"\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Kulkas 1 pintu\",\r\n    \"desc\": \"Kulkas satu pintu\",\r\n    \"price\": \"570000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/products/{{proudctId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"{{proudctId}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-eDnBL+cck/Y9X0Ln6hGv1szVLdY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:02:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Maaf product tidak ada\"\n}"
+						}
+					]
+				},
+				{
+					"name": "detailProduct Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/products/{{proudctId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"{{proudctId}}"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/products/{{proudctId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"{{proudctId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-+A3dR4DQ67rbe9YwMAD5ulfyuWM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:01:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Berhasil menghapus product\"\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/products/{{proudctId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"products",
+										"{{proudctId}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-eDnBL+cck/Y9X0Ln6hGv1szVLdY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:02:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Maaf product tidak ada\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoint untuk fitur Products"
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n    \"qty\": \"3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cart",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n    \"qty\": \"3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cart",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "293"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"125-IhrFhRRWMUSX/WcaaPZCWqy4U/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:25:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": {\n        \"id\": \"623b39ac-c755-490a-9752-89b0ea4c700b\",\n        \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n        \"qty\": \"3\",\n        \"totalPrice\": 2700000,\n        \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n        \"updatedAt\": \"2024-01-05T16:25:21.270Z\",\n        \"createdAt\": \"2024-01-05T16:25:21.270Z\"\n    }\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n    \"qty\": \"3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cart",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-G37x8n94Ecsw1HppVusLvLobQu8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:25:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"500\",\n    \"status\": \"Internal Server Error\",\n    \"message\": \"Sorry our server get error\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"const jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"itemId\", jsonData.data.OrderItems[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/cart",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/cart",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1049"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"419-w/xbIpjqTbI+G224pOvk+U0J0BU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 12:12:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Response Success\",\n    \"data\": {\n        \"orderId\": \"9d39a496-369f-4731-a970-34baec353845\",\n        \"customerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\",\n        \"billing\": \"0.00\",\n        \"status\": \"cart\",\n        \"createdAt\": \"2024-01-05T12:11:19.000Z\",\n        \"updatedAt\": \"2024-01-05T12:11:19.000Z\",\n        \"OrderItems\": [\n            {\n                \"id\": \"3ae28dcb-4069-4d40-8de4-abab5b6dbe6d\",\n                \"productId\": \"0aa9704a-13ad-4340-913e-a81ded34eb65\",\n                \"qty\": 2,\n                \"totalPrice\": \"0.00\",\n                \"orderId\": \"9d39a496-369f-4731-a970-34baec353845\",\n                \"createdAt\": \"2024-01-05T12:11:35.000Z\",\n                \"updatedAt\": \"2024-01-05T12:11:35.000Z\"\n            },\n            {\n                \"id\": \"b1979d62-2f5f-4d32-bdc3-74f6bb993ca8\",\n                \"productId\": \"0aa9704a-13ad-4340-913e-a81ded34eb65\",\n                \"qty\": 5,\n                \"totalPrice\": \"0.00\",\n                \"orderId\": \"9d39a496-369f-4731-a970-34baec353845\",\n                \"createdAt\": \"2024-01-05T12:11:32.000Z\",\n                \"updatedAt\": \"2024-01-05T12:11:32.000Z\"\n            },\n            {\n                \"id\": \"eb58768c-87f2-4041-9a1c-fb16ed5df165\",\n                \"productId\": \"0aa9704a-13ad-4340-913e-a81ded34eb65\",\n                \"qty\": 1,\n                \"totalPrice\": \"0.00\",\n                \"orderId\": \"9d39a496-369f-4731-a970-34baec353845\",\n                \"createdAt\": \"2024-01-05T12:11:19.000Z\",\n                \"updatedAt\": \"2024-01-05T12:11:19.000Z\"\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/cart",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-G37x8n94Ecsw1HppVusLvLobQu8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:25:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"500\",\n    \"status\": \"Internal Server Error\",\n    \"message\": \"Sorry our server get error\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2920"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b68-jvysJqZ2rCF4o9iZx9proApaHwY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:27:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Response Success\",\n    \"data\": [\n        {\n            \"id\": \"4ec6c322-5c51-434f-a95f-9a6cee36dc9b\",\n            \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n            \"qty\": 3,\n            \"totalPrice\": \"27000000.00\",\n            \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n            \"createdAt\": \"2024-01-05T15:08:10.000Z\",\n            \"updatedAt\": \"2024-01-05T15:08:10.000Z\",\n            \"Order.status\": \"pending\",\n            \"Product.name\": \"Kulkas 4 pintu\",\n            \"Product.desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n            \"Product.price\": \"900000.00\",\n            \"Product.sellerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\"\n        },\n        {\n            \"id\": \"623b39ac-c755-490a-9752-89b0ea4c700b\",\n            \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n            \"qty\": 3,\n            \"totalPrice\": \"2700000.00\",\n            \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n            \"createdAt\": \"2024-01-05T16:25:21.000Z\",\n            \"updatedAt\": \"2024-01-05T16:25:21.000Z\",\n            \"Order.status\": \"pending\",\n            \"Product.name\": \"Kulkas 4 pintu\",\n            \"Product.desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n            \"Product.price\": \"900000.00\",\n            \"Product.sellerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\"\n        },\n        {\n            \"id\": \"6ef41a75-ef7e-4239-8a1c-4ab00f51e5ab\",\n            \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n            \"qty\": 3,\n            \"totalPrice\": \"27000000.00\",\n            \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n            \"createdAt\": \"2024-01-05T15:09:27.000Z\",\n            \"updatedAt\": \"2024-01-05T15:09:27.000Z\",\n            \"Order.status\": \"pending\",\n            \"Product.name\": \"Kulkas 4 pintu\",\n            \"Product.desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n            \"Product.price\": \"900000.00\",\n            \"Product.sellerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\"\n        },\n        {\n            \"id\": \"70dbf522-02ac-4767-9146-7c9aee7a2eb0\",\n            \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n            \"qty\": 3,\n            \"totalPrice\": \"27000000.00\",\n            \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n            \"createdAt\": \"2024-01-05T15:04:53.000Z\",\n            \"updatedAt\": \"2024-01-05T15:04:53.000Z\",\n            \"Order.status\": \"pending\",\n            \"Product.name\": \"Kulkas 4 pintu\",\n            \"Product.desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n            \"Product.price\": \"900000.00\",\n            \"Product.sellerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\"\n        },\n        {\n            \"id\": \"a066ab31-81ea-4acc-bbda-157b6419e061\",\n            \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n            \"qty\": 3,\n            \"totalPrice\": \"27000000.00\",\n            \"orderId\": \"4e11df53-3b5a-4a4d-a571-e1c0ce8eb75b\",\n            \"createdAt\": \"2024-01-05T14:46:57.000Z\",\n            \"updatedAt\": \"2024-01-05T14:46:57.000Z\",\n            \"Order.status\": \"pending\",\n            \"Product.name\": \"Kulkas 4 pintu\",\n            \"Product.desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n            \"Product.price\": \"900000.00\",\n            \"Product.sellerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\"\n        },\n        {\n            \"id\": \"f1678384-99aa-467e-a57c-af18e0548521\",\n            \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n            \"qty\": 2,\n            \"totalPrice\": \"2000000.00\",\n            \"orderId\": \"4e11df53-3b5a-4a4d-a571-e1c0ce8eb75b\",\n            \"createdAt\": \"2024-01-05T14:46:47.000Z\",\n            \"updatedAt\": \"2024-01-05T14:46:47.000Z\",\n            \"Order.status\": \"pending\",\n            \"Product.name\": \"Kulkas 4 pintu\",\n            \"Product.desc\": \"Kulkas empat pintu dengan fitur membuat batu es otomatis\",\n            \"Product.price\": \"900000.00\",\n            \"Product.sellerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-G37x8n94Ecsw1HppVusLvLobQu8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:28:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"500\",\n    \"status\": \"Internal Server Error\",\n    \"message\": \"Sorry our server get error\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Checkout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/checkout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"checkout"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/checkout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"checkout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1313"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"521-H+xTjJuuoXzDrOLKB3YJP0EmV+w\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:27:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": {\n        \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n        \"customerId\": \"42e7105e-27c0-4107-9446-92aa10d8108d\",\n        \"billing\": \"120600000.00\",\n        \"status\": \"pending\",\n        \"createdAt\": \"2024-01-05T15:04:52.000Z\",\n        \"updatedAt\": \"2024-01-05T16:27:04.000Z\",\n        \"OrderItems\": [\n            {\n                \"id\": \"4ec6c322-5c51-434f-a95f-9a6cee36dc9b\",\n                \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n                \"qty\": 3,\n                \"totalPrice\": \"27000000.00\",\n                \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n                \"createdAt\": \"2024-01-05T15:08:10.000Z\",\n                \"updatedAt\": \"2024-01-05T15:08:10.000Z\"\n            },\n            {\n                \"id\": \"623b39ac-c755-490a-9752-89b0ea4c700b\",\n                \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n                \"qty\": 3,\n                \"totalPrice\": \"2700000.00\",\n                \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n                \"createdAt\": \"2024-01-05T16:25:21.000Z\",\n                \"updatedAt\": \"2024-01-05T16:25:21.000Z\"\n            },\n            {\n                \"id\": \"6ef41a75-ef7e-4239-8a1c-4ab00f51e5ab\",\n                \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n                \"qty\": 3,\n                \"totalPrice\": \"27000000.00\",\n                \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n                \"createdAt\": \"2024-01-05T15:09:27.000Z\",\n                \"updatedAt\": \"2024-01-05T15:09:27.000Z\"\n            },\n            {\n                \"id\": \"70dbf522-02ac-4767-9146-7c9aee7a2eb0\",\n                \"productId\": \"325cc5b2-35d2-45ed-affe-5fcf02e3ff29\",\n                \"qty\": 3,\n                \"totalPrice\": \"27000000.00\",\n                \"orderId\": \"4057a841-9070-4863-a986-6e7abb107f17\",\n                \"createdAt\": \"2024-01-05T15:04:53.000Z\",\n                \"updatedAt\": \"2024-01-05T15:04:53.000Z\"\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/checkout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"checkout"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-H7jXvF0Sxotz8qRMOUX+Sse5/Ac\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:27:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Maaf keranjang anda kosong\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cart/{{itemId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart",
+								"{{itemId}}"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cart/{{itemId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart",
+										"{{itemId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-FGqPVlSw0N2P6z6xSRqO0j8aaz8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:29:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"200\",\n    \"status\": \"OK\",\n    \"message\": \"Berhasil menghapus item\"\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cart/{{itemId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cart",
+										"{{itemId}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-4fwYbP+yaZtCkcGfi1c2xshQsAo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Jan 2024 16:29:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"400\",\n    \"status\": \"Bad Request\",\n    \"message\": \"Maaf item tidak ada\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
