@@ -5,7 +5,6 @@ import blacklist from "./../config/blacklist.js";
 export const token = (req, res, next) => {
   const { authorization } = req.headers;
   const token = authorization.split(" ")[1] || authorization;
-  console.log(token)
 
   if (!token) {
     return response.res401(
