@@ -1,4 +1,3 @@
-import sequelize from "../config/db.js";
 import Users from "./users.js";
 import Products from "./products.js";
 import Orders from "./orders.js";
@@ -52,8 +51,8 @@ OrderItems.belongsTo(Products, {
   onDelete: "RESTRICT",
 });
 
-// if (process.env.ENV == "development") {
-//   sequelize.sync();
-// }
+if (process.env.ENV == "development") {
+  sequelize.sync();
+}
 
 export { Users, Products, Orders, OrderItems };
