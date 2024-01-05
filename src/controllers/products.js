@@ -1,5 +1,5 @@
 import * as response from "../utils/response.js";
-import Products from "../models/products.js";
+import { Products } from "../models/index.js";
 
 export const getAll = async (req, res) => {
   try {

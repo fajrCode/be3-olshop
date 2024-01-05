@@ -1,4 +1,4 @@
-import Users from "../models/users.js";
+import { Users } from "../models/index.js";
 import { compare } from "../utils/encrypt.js";
 import * as response from "../utils/response.js";
 import moment from "moment-timezone";
@@ -92,7 +92,7 @@ export const logout = async (req, res) => {
     const maxBlacklist = await Users.count(); //sesuaikan dengan skala aplikasi
 
     if (blacklist.length >= maxBlacklist) {
-      blacklist.splice(0, maxBlacklist/2); //hapus token yang ada di blacklist sebanyak 1/2 penetapam max data dimulai dari index 0
+      blacklist.splice(0, maxBlacklist / 2); //hapus token yang ada di blacklist sebanyak 1/2 penetapam max data dimulai dari index 0
     }
 
     //tambahkan token ke blacklist
