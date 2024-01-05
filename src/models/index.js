@@ -1,3 +1,4 @@
+import sequelize from "../config/db.js";
 import Users from "./users.js";
 import Products from "./products.js";
 import Orders from "./orders.js";
