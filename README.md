@@ -3,7 +3,8 @@
 API toko online sederhana untuk memenuhi task dari ADS Digital Partner.
 
 <h3>Design Database <img src="https://cdn3.emoji.gg/emojis/Database.png" width="20px" alt="Database"></h3>
-<p>API ini menggunakan RDBMS <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" width="50px"></a>. Database API ini memiliki 4 tabel. Juga di design menggunakan <a href="https://dbdiagram.io/home"></a></p>
+<p>API ini menggunakan RDBMS <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" width="50px"></a>. Database API ini memiliki 4 tabel. Juga di design menggunakan <a href="https://dbdiagram.io/home">dbdiagram.io</a></p>
+<img src="./db/db_design.png" width=50%>
 
 <h3>Fitur API ✨ </h3>
 <h5>Auth</h5>
