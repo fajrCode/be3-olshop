@@ -141,13 +141,13 @@ API toko online sederhana untuk memenuhi task dari ADS Digital Partner.
 
 <h3>Kuy cobain projectnya</h3>
 <h4>Deskripsi</h4>
-<li>API Olshop ADS</li>
+<p>API Olshop ADS</p>
 <li>Language: Javascript.</li>
 <li>Framework: NodeJS</li>
 <li>Database: MySQL</li>
 <li>ORM: Sequelize</li>
 <li>Lastest update: v1.0</li>
-<li>Untuk menjalankan API ini secara local, kamu perlu:</li>
+<p>Untuk menjalankan API ini secara local, kamu perlu:</p>
 <ol>
   <li>Clone repository https://github.com/fajrCode/be3-olshop or download to your local.</li>
   <li>Buka project nya menggunakan editor kesukaanmu (disini saya menggunakan VSCode ya)</li>
