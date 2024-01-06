@@ -7,7 +7,7 @@ API toko online sederhana untuk memenuhi task dari ADS Digital Partner.
 <img src="./db/db_design.png" width=100%>
 
 <h3>Fitur API ✨ </h3>
-<h5>Auth</h5>
+<h4>Auth</h4>
 <p>Fitur authentikasi dan autherisasi, dengan 3 endpoint utama yaitu registrasi, login, dan logout. Menggunakan sistem JWT yang di aktifkan pada endpoint login, dan dijadikan validasi pada setiap endpoint yang membutuhkan.</p>
 <table>
     <thead>
@@ -40,7 +40,7 @@ API toko online sederhana untuk memenuhi task dari ADS Digital Partner.
     </tbody>
 </table>
 
-<h5>Product</h5>
+<h4>Product</h4>
 <p>Pada bagian ini, user dengan role seller memiliki akses untuk membuat product, melihat product miliknya, melihat product orang lain, mengedit, serta menghapus product miliknya. Untuk user dengan role customer hanya bisa melihat product yang di sediakan semua seller</p>
 <table>
     <thead>
@@ -91,7 +91,7 @@ API toko online sederhana untuk memenuhi task dari ADS Digital Partner.
     </tbody>
 </table>
 
-<h5>Cart & Orders</h5>
+<h4>Cart & Orders</h4>
 <p>Pada bagian ini, user dengan role seller hanya memiliki akses pada beberapa endpoint yang di gunakan untuk melihat pesanan yang masuk mereka. User dengan role customer dapat melakukan penambahan product ke keranjang belanja, menghapus product yang ada di keranjang belanja, melakukan checkout product yang ada di keranjang belanja </p>
 <table>
     <thead>
@@ -140,7 +140,7 @@ API toko online sederhana untuk memenuhi task dari ADS Digital Partner.
 <p>Dokumentasi API ini menggunakan <a href="https://www.postman.com/"><img src="https://symbiotics.co.za/wp-content/uploads/2017/10/postman-logo.png" width="50px"></a>: <a href="https://documenter.getpostman.com/view/27898805/2s9YsGjE9G">ADS Olshop API Documentation</a></p>
 
 <h3>Kuy cobain projectnya</h3>
-<h5>Deskripsi</h5>
+<h4>Deskripsi</h4>
 <p>API Olshop ADS</p>
 <p>Language: Javascript.</p>
 <p>Framework: NodeJS</p>
